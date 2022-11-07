@@ -1,5 +1,7 @@
 const Transaction = require('../models/transaction');
 const { body, validationResult } = require('express-validator');
+const User = require('../models/user');
+
 
 exports.loadTransactions = async (req, res, next, id) => {
   try {
@@ -22,6 +24,9 @@ exports.createTransaction = async (req, res, next) => {
     try {
       const { value, paymentMethod, flow, category, description } = req.body;
       const owner = req.user.id
+      const user = await User.findById(owner);
+      user.updateBalance(flow, value);
+
       const transaction = await Transaction.create({
         owner,
         value,
@@ -75,6 +80,10 @@ exports.createTransaction = async (req, res, next) => {
     }
     try {
       const { value, paymentMethod, flow, category, description } = req.body;
+      const user = await User.findById(req.user.id);
+      var newValue = (req.transaction.flow == "inflow") ? parseInt(req.transaction.value) * -1 : parseInt(req.transaction.value);
+      newValue += (flow == "inflow") ? parseInt(value) : parseInt(value) * -1;
+      user.updateBalance("inflow", newValue);
       const transaction = await req.transaction.updateTransaction(value, paymentMethod, flow, category, description);
       res.json(transaction);
     } catch (error) {
@@ -84,6 +93,8 @@ exports.createTransaction = async (req, res, next) => {
 
   exports.deleteTransaction = async (req, res, next) => {
       try {
+        const user = await User.findById(req.transaction.owner);
+        user.updateBalance(req.transaction.flow, parseInt(req.transaction.value) * -1);
         await req.transaction.remove();
         res.status(200).json({ message: 'Your transaction is successfully deleted.' });
       } catch (error) {

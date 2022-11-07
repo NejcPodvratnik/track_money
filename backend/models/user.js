@@ -17,4 +17,14 @@ userModel.options.toJSON.transform = (doc, ret) => {
   return obj;
 };
 
+userModel.methods = {
+  updateBalance: function (flow, value) {
+    if (flow == "inflow")
+      this.balance += parseInt(value)
+    else if (flow == "outflow")
+      this.balance -= parseInt(value);
+    return this.save();
+  },
+};
+
 module.exports = mongoose.model('user', userModel);
