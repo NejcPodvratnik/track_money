@@ -7,7 +7,8 @@ const createToken = (user) => {
     {
       id: user._id,
       email: user.email.toLowerCase(),
-      username: user.username,
+      name: user.name,
+      surname: user.surname,
       balance: user.balance
     },
     config.jwt.secret,

@@ -15,8 +15,8 @@ exports.signup = async (req, res) => {
 
   try {
     const { name, surname, email } = req.body;
-    const { valid, reason, validators } = await validate(email);
-    if (!valid) return res.status(422).json({ message: `email is not valid (${reason})` });
+    //const { valid, reason, validators } = await validate(email);
+    //if (!valid) return res.status(422).json({ message: `email is not valid (${reason})` });
     const hashedPassword = await hashPassword(req.body.password);
 
     const userData = {
