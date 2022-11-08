@@ -14,26 +14,18 @@ exports.signup = async (req, res) => {
   }
 
   try {
-    const { username, email } = req.body;
+    const { name, surname, email } = req.body;
     const { valid, reason, validators } = await validate(email);
     if (!valid) return res.status(422).json({ message: `email is not valid (${reason})` });
     const hashedPassword = await hashPassword(req.body.password);
 
     const userData = {
       email: email.toLowerCase(),
-      username: username,
+      name: name,
+      surname: surname,
       password: hashedPassword,
     };
 
-    const existingUsername = await User.findOne({
-      username: userData.username
-    }).exec();
-
-    if (existingUsername) {
-      return res.status(422).json({
-        message: 'Username already exists.'
-      });
-    }
 
     const existingEmail = await User.findOne({
       email: userData.email.toLowerCase()
@@ -53,10 +45,11 @@ exports.signup = async (req, res) => {
       const decodedToken = jwtDecode(token);
       const expiresAt = decodedToken.exp;
 
-      const { email, username, balance, id } = savedUser;
+      const { email, name, surname, balance, id } = savedUser;
       const userInfo = {
         email,
-        username,
+        name,
+        surname,
         balance,
         id,
       };
@@ -104,8 +97,8 @@ exports.authenticate = async (req, res) => {
       const token = createToken(user);
       const decodedToken = jwtDecode(token);
       const expiresAt = decodedToken.exp;
-      const { email, username, balance, id } = user;
-      const userInfo = { email, username,balance , id };
+      const { email, name, surname, balance, id } = user;
+      const userInfo = { email, name, surname, balance , id };
 
       res.json({
         message: 'Authentication successful!',
@@ -147,7 +140,21 @@ exports.validateSignUp = [
     .isEmail()
     .withMessage('is in wrong format'),
 
-  body('username')
+  body('name')
+    .exists()
+    .trim()
+    .withMessage('is required')
+
+    .notEmpty()
+    .withMessage('cannot be blank')
+
+    .isLength({ max: 16 })
+    .withMessage('must be at most 16 characters long')
+
+    .matches(/^[a-zA-Z0-9_-]+$/)
+    .withMessage('contains invalid characters'),
+
+    body('surname')
     .exists()
     .trim()
     .withMessage('is required')
