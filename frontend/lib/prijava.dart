@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:money_tracker/registracija.dart';
-import 'home.dart';
-import 'pozabljeno_geslo.dart';
+import 'package:frontend/registracija.dart';
+import 'package:frontend/home.dart';
+import 'package:frontend/pozabljeno_geslo.dart';
 
 class Prijava extends StatefulWidget {
   const Prijava({Key? key}) : super(key: key);
@@ -18,23 +18,28 @@ class _PrijavaState extends State<Prijava> {
         child: Column(
           children: [
             TextButton(
-                onPressed: (){Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Home()));},
+                onPressed: () {
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (context) => Home()));
+                },
                 child: Text('Prijava')),
             TextButton(
-                onPressed: (){Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Registracija()));},
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Registracija()));
+                },
                 child: Text('Registracija')),
             TextButton(
-                onPressed: (){Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => PozabljenoGeslo()));},
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => PozabljenoGeslo()));
+                },
                 child: Text('Ste pozabili geslo?'))
           ],
         ),
       ),
-
     );
   }
-
-
 }
