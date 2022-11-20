@@ -19,24 +19,26 @@ class _PrijavaState extends State<Prijava> {
           children: [
             TextButton(
                 onPressed: () {
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (context) => Home()));
-                },
-                child: Text('Prijava')),
-            TextButton(
-                onPressed: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Registracija()));
+                      MaterialPageRoute(builder: (context) => const Home()));
                 },
-                child: Text('Registracija')),
+                child: const Text('Prijava')),
             TextButton(
                 onPressed: () {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => PozabljenoGeslo()));
+                          builder: (context) => const Registracija()));
                 },
-                child: Text('Ste pozabili geslo?'))
+                child: const Text('Registracija')),
+            TextButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const PozabljenoGeslo()));
+                },
+                child: const Text('Ste pozabili geslo?'))
           ],
         ),
       ),
