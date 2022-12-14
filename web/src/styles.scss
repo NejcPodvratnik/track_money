@@ -1,1 +1,29 @@
-/* You can add global styles to this file, and also import other style files */
+$default-text-color: #000;  
+$primary-color: #F79635; 
+$secondary-color: #AFC8CF; 
+
+$background-color: $secondary-color;
+
+body {
+    margin: unset;
+    font-family: "Open Sans", sans-serif;
+}
+
+.background {
+    margin: unset;
+    height: 100vh;
+    background-color: $secondary-color;
+    text-align: center;
+}
+
+.primary-button {
+    border-radius: 4px;
+    background-color: $primary-color;
+    padding: 8px;
+    border: none; 
+
+    &:hover {
+        cursor: pointer;
+        opacity: 0.9;
+    }
+}
