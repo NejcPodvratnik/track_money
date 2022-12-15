@@ -7,6 +7,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { StatisticsComponent } from './statistics/statistics.component';
 import { HomeComponent } from './home/home.component';
 import { TransactionInputComponent } from './transaction-input/transaction-input.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { TransactionInputComponent } from './transaction-input/transaction-input
   ],
   imports: [
     CommonModule,
-    MainRoutingModule
+    MainRoutingModule, 
+    FormsModule
   ]
 })
 export class MainModule { }

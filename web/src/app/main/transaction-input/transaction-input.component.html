@@ -1,1 +1,12 @@
-<p>transaction-input works!</p>
+
+<div class="transaction">
+    <h1>
+        Vnos transakcije
+    </h1>
+    <input type="number" min="0" [(ngModel)]='transactionValue' class="input-class" placeholder="Vnos vrednosti">
+    <div class="button-wrapper">
+        <button (click)="onInFowClick()" [class.selected]="selectedTrasactionType == TransactionType.INFLOW">Priliv</button>
+        <button (click)="onOutFowClick()" [class.selected]="selectedTrasactionType == TransactionType.OUTFLOW">Odliv</button>
+    </div>
+    <input type="password" [(ngModel)]='description' class="input-class" placeholder="Opis">
+</div>
