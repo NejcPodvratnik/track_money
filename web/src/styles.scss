@@ -1,5 +1,5 @@
 $default-text-color: #000;  
-$primary-color: #F79635; 
+$primary-color: #FEB975; 
 $secondary-color: #AFC8CF;
 
 $title-color: #4D5495; 
@@ -11,6 +11,8 @@ $selected-sidebar-element-color: #7e460f;
 
 $primary-button-color: #fff; 
 $primary-button-color-selected: $primary-color; 
+
+$text-color-secondary: rgba(#000000, 0.5); 
 
 body {
     margin: unset;
@@ -44,8 +46,8 @@ body {
 .primary-button {
     border-radius: 4px;
     background-color: $primary-color;
-    padding: 8px;
-    border: none; 
+    padding: 12px 20px;
+    border: 1px solid #000; 
 
     &:hover {
         cursor: pointer;
@@ -99,8 +101,18 @@ body {
     }
 }
 
+.input-field-wrapper {
+    width: 20vw;
+    display: flex;
+    flex-direction: column;
+}
+
 .input-class {
-    margin: 10px;
+    margin: 10px 0;
+    max-width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc; 
+    border-radius: 4px;
 }
 
 .transaction {
@@ -121,7 +133,36 @@ body {
                 background-color: $primary-button-color-selected;
             }
         }
+    }
+}
 
-       
+.login-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+
+    .forgot-password {
+        @extend .secondary-text; 
+        width: 20vw;
+        display: flex;
+        justify-content: end;
+        margin-bottom: 20px;
+    }
+
+    .register {
+        @extend .secondary-text; 
+        margin: 15px;
+    }
+}
+
+.secondary-text {
+    color: $text-color-secondary;
+    font-size: 0.8rem;
+    text-decoration: underline;
+
+    &:hover {
+        cursor: pointer;
     }
 }
