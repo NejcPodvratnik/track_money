@@ -31,7 +31,8 @@ body {
         width: 100%;
     }
 
-    .title{
+    .title {
+        background-color: white;
         color: $title-color;
         font-size: 44px;
         padding: 10px;
@@ -40,6 +41,10 @@ body {
         font-family: system-ui;
         text-transform: uppercase;
         text-shadow: 10px 10px 10px rgba(175, 200, 207, 0.6);
+    
+        &.main {
+            font-size: 64px;
+        }
     }
 }
 
