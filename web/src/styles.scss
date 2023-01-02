@@ -2,6 +2,9 @@ $default-text-color: #000;
 $primary-color: #F79635; 
 $secondary-color: #AFC8CF;
 
+$title-color: #4D5495; 
+$sidebar-background: #77A0BE; 
+$sidebar-background-active: #A1C7E2; 
 $background-color: $secondary-color;
 $icon-color: $primary-color; 
 $selected-sidebar-element-color: #7e460f; 
@@ -15,10 +18,8 @@ body {
 }
 
 .background {
-    display: flex;
     margin: unset;
     height: 100vh;
-    background-color: $secondary-color;
     text-align: center;
 
     .column-class {
@@ -40,35 +41,40 @@ body {
 
 .sidebar {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-between;
-    height: 100%;
+    background-color: $sidebar-background;
 
-    .logout-wrapper {
-        margin: 30px;
+    .sidebar-border-class {
+        display: flex;
+        justify-items: center;
+        align-items: center;
     }
 
     .icon-box-class {
         cursor: pointer;
         color: white;
         font-size: 32px;
-        margin: 30px 0 5px;
         display: flex;
         flex-direction: column;
         text-decoration: none;
+        padding: 10px;
     
         &:hover {
             color: $icon-color;
-            cursor: pointer;
+            cursor: pointer !important;
             text-decoration: none;
         }  
         
         &.active {
             color: $selected-sidebar-element-color;
+            background-color: $sidebar-background-active;
         }
 
-        .sidebar-text-clas {
-            font-size: 12px;
+        .sidebar-text-class {
+            &:hover {
+                cursor: pointer;
+            }
         }
     }
 }
