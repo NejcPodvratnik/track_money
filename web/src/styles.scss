@@ -21,6 +21,9 @@ body {
     margin: unset;
     height: 100vh;
     text-align: center;
+    background-image: url("assets/background.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
 
     .column-class {
         width: 100%;
