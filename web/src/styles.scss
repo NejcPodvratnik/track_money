@@ -3,6 +3,7 @@ $primary-color: #FEB975;
 $secondary-color: #AFC8CF;
 
 $title-color: #4D5495; 
+$secondary-title-color: #F79635; 
 $sidebar-background: #77A0BE; 
 $sidebar-background-active: #A1C7E2; 
 $background-color: $secondary-color;
@@ -13,6 +14,8 @@ $primary-button-color: #fff;
 $primary-button-color-selected: $primary-color; 
 
 $text-color-secondary: rgba(#000000, 0.5); 
+
+$inputfield-border-radius: 4px;
 
 body {
     margin: unset;
@@ -90,7 +93,8 @@ body {
         }  
         
         &.active {
-            color: $selected-sidebar-element-color;
+            // color: $selected-sidebar-element-color;
+            font-weight: bold;
             background-color: $sidebar-background-active;
         }
 
@@ -120,26 +124,41 @@ body {
     border-radius: 4px;
 }
 
-.transaction {
+.transaction-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
 
-    .button-wrapper {
+    .transaction {
         display: flex;
-        
-        button {
-            background-color: $primary-button-color;
-            margin: 8px;
-            padding: 4px;
+        justify-content: center;
+        align-items: flex-start;
+        flex-direction: column;
+        width: 30vw;
 
-            &.selected {
-                background-color: $primary-button-color-selected;
+        .button-wrapper {
+            display: flex;
+
+            .primary-button {
+                margin-left: 0;
             }
+            
+            button {
+                background-color: $primary-button-color;
+                margin: 8px;
+
+                &.selected {
+                    background-color: $primary-button-color-selected;
+                }
+            }
+        }
+
+        h1 {
+            color: $secondary-title-color;
         }
     }
 }
+
 
 .login-wrapper {
     display: flex;
@@ -170,4 +189,24 @@ body {
     &:hover {
         cursor: pointer;
     }
+}
+
+.dropdown {
+
+    select {
+        // margin: 50px;
+        margin: 10px 0;
+        max-width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+    }
+}
+
+.save-wrapper {
+    margin-top: 30px; 
+    width: 100%;
 }

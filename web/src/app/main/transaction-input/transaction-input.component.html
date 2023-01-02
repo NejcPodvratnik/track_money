@@ -1,12 +1,28 @@
 
-<div class="transaction">
-    <h1>
-        Vnos transakcije
-    </h1>
-    <input type="number" min="0" [(ngModel)]='transactionValue' class="input-class" placeholder="Vnos vrednosti">
-    <div class="button-wrapper">
-        <button (click)="onInFowClick()" [class.selected]="selectedTrasactionType == TransactionType.INFLOW">Priliv</button>
-        <button (click)="onOutFowClick()" [class.selected]="selectedTrasactionType == TransactionType.OUTFLOW">Odliv</button>
+<div class="transaction-wrapper">
+    <div class="transaction">
+        <h1>
+            Vnos transakcije
+        </h1>
+        <input type="number" min="0" [(ngModel)]='transactionValue' class="input-class" placeholder="Vnos vrednosti">
+        <div class="dropdown">
+            <select #paymentTypeDropdown class="dropdown " (change)="onSelectedPaymentType()">
+                <option *ngFor="let payment of PaymentsType | keyvalue; let index"
+                 [value]="payment.key" [attr.selected]="selectedPaymentType === payment.key">{{payment.value}}
+                </option>
+          </select>
+        </div>
+        <div class="button-wrapper">
+            <button class="primary-button" (click)="onInFowClick()" [class.selected]="selectedTrasactionType == TransactionType.INFLOW">Priliv</button>
+            <button class="primary-button" (click)="onOutFowClick()" [class.selected]="selectedTrasactionType == TransactionType.OUTFLOW">Odliv</button>
+        </div>
+        <div class="dropdown">
+            <select #categoryDropdown class="dropdown " (change)="onSelectedCategory()">
+                <option *ngFor="let category of Category | keyvalue; let index"
+                 [value]="category.key" [attr.selected]="selectedPaymentType === category.key">{{category.value}}
+                </option>
+          </select>
+        </div>
+        <input type="password" [(ngModel)]='description' class="input-class" placeholder="Opis">
     </div>
-    <input type="password" [(ngModel)]='description' class="input-class" placeholder="Opis">
 </div>
